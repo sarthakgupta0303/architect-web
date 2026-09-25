@@ -41,15 +41,17 @@ export async function POST(req: NextRequest) {
 
     if (!requireConfirmation && admin) {
       const { error } = await admin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata: { full_name: fullName } })
-      if (error) {
-        if (/already|exists|registered/i.test(error.message)) {
-          throw new AppError('CONFLICT', 'An account with this email already exists — log in instead', { fieldErrors: { email: ['Already registered'] } })
-        }
-        throw new AppError('UPSTREAM_ERROR', `Could not create your account: ${error.message}`)
+      if (!error) {
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })
+        if (signInError) throw new AppError('UPSTREAM_ERROR', 'Account created — please log in')
+        return NextResponse.json({ status: 'signed_in', next })
       }
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })
-      if (signInError) throw new AppError('UPSTREAM_ERROR', 'Account created — please log in')
-      return NextResponse.json({ status: 'signed_in', next })
+      if (/already|exists|registered/i.test(error.message)) {
+        throw new AppError('CONFLICT', 'An account with this email already exists — log in instead', { fieldErrors: { email: ['Already registered'] } })
+      }
+      // Misconfigured service key (e.g. "Invalid API key"): fall back to the standard sign-up below
+      // so new users are never blocked by a server setting.
+      console.error('[signup] admin createUser failed, falling back to public sign-up:', error.message)
     }
 
     const callback = `${req.nextUrl.origin}/auth/callback?next=${encodeURIComponent(next)}`
