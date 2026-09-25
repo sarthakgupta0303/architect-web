@@ -1,6 +1,6 @@
 # Architect 2.0 — Security Plan
 
-Status: implemented · Date: 2026-09-25 · Scope: `architect-web` (Next.js app + Supabase project `cfkfoiizrlxmuykjjkni`)
+Status: implemented · Date: 2026-09-25 · Scope: `architect-web` (Next.js app + its Supabase project)
 
 Inputs: `docs/engineering/engineering-doc.md`, `docs/specs/*` (esp. `security.md`, `api-conventions.md`, `conversation-memory.md`), a full code review, Supabase security/performance advisors run against the live project, and adversarial SQL tests against a local copy of the schema.
 
