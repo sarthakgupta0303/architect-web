@@ -5,10 +5,6 @@ import { HeroPrompt } from '@/features/generation/components/HeroPrompt'
 export function Hero({ signedIn }: { signedIn: boolean }) {
   return (
     <section aria-labelledby="hero-title" className="mx-auto flex max-w-6xl flex-col items-center px-4 pb-16 pt-10 text-center sm:px-6 sm:pt-16">
-      <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted">
-        <span className="size-1.5 rounded-full bg-success" aria-hidden />
-        Architect 2.0 by Lyzr · agentic apps for builders and developers
-      </p>
       <h1 id="hero-title" className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
         Describe an AI agent app.{' '}
         <span className="bg-gradient-to-r from-primary-text to-accent bg-clip-text text-transparent">Architect plans it, builds it and ships it.</span>

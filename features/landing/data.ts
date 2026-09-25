@@ -21,12 +21,11 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-export const DOCS_URL = 'https://docs.lyzr.ai'
-export const LYZR_URL = 'https://www.lyzr.ai'
+export const DOCS_URL = 'https://github.com/sarthakgupta0303/architect-web#readme'
 
 /** Frameworks and tools shown in the "works with" strip. Wordmarks only, no logos or endorsement claims. */
 export const STACK = [
-  'Lyzr ADK',
+  'Architect ADK',
   'LangGraph',
   'CrewAI',
   'OpenAI Agents SDK',
@@ -56,7 +55,7 @@ export const VALUE_PROPS: ValueProp[] = [
     icon: GitBranch,
     title: 'Any agent framework, your repo',
     body: 'Pick the runtime that fits your stack and keep the code where your team already reviews it.',
-    points: ['Lyzr ADK, LangGraph, CrewAI or OpenAI Agents SDK', 'Two-way GitHub sync with branches and PRs', 'Export the code whenever you want'],
+    points: ['Architect ADK, LangGraph, CrewAI or OpenAI Agents SDK', 'Two-way GitHub sync with branches and PRs', 'Export the code whenever you want'],
   },
   {
     icon: ShieldCheck,
@@ -98,7 +97,7 @@ export const AUDIENCES: Audience[] = [
     points: [
       { icon: Code2, text: 'Editor, terminal and test runner in the browser' },
       { icon: GitBranch, text: 'Two-way GitHub sync, branches and pull requests' },
-      { icon: Bot, text: 'Lyzr ADK, LangGraph, CrewAI or OpenAI Agents SDK' },
+      { icon: Bot, text: 'Architect ADK, LangGraph, CrewAI or OpenAI Agents SDK' },
       { icon: ShieldCheck, text: 'Traces, evals and guardrails wired in from day one' },
     ],
   },

@@ -13,7 +13,7 @@ export const Framework = z.enum(['lyzr_adk', 'langgraph', 'crewai', 'openai_agen
 export type Framework = z.infer<typeof Framework>
 
 export const FRAMEWORK_LABELS: Record<string, string> = {
-  lyzr_adk: 'Lyzr ADK',
+  lyzr_adk: 'Architect ADK',
   langgraph: 'LangGraph',
   crewai: 'CrewAI',
   openai_agents: 'OpenAI Agents SDK',

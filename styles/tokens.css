@@ -1,7 +1,7 @@
 /*
  * Architect 2.0 design tokens — source: docs/design-system.md §1.
  * RGB triplets so Tailwind opacity modifiers work (bg-primary/10).
- * Interim Lyzr-style palette: swap values here when exact brand hex values are supplied.
+ * Interim purple palette: swap values here when exact brand hex values are supplied.
  */
 :root {
   --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;

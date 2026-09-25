@@ -2,7 +2,7 @@
 
 A short, step-by-step story of how this project went from an idea to a working app.
 
-1. **Researched the market.** Looked at tools like Lovable, Bolt, Replit, v0, Cursor and the original Lyzr Architect to learn what works and what's missing.
+1. **Researched the market.** Looked at tools like Lovable, Bolt, Replit, v0, Cursor and the original Architect to learn what works and what's missing.
 2. **Wrote the product plan.** Described who it's for, every screen, and how each step leads to the next.
 3. **Wrote the engineering plan.** Chose the technology and designed the database, the APIs and the security approach.
 4. **Set up the project.** Started a Next.js app and connected it to Supabase.

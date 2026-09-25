@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { Logo } from '@/components/shared/Logo'
 
-const DOCS_URL = 'https://docs.lyzr.ai'
-const LYZR_URL = 'https://www.lyzr.ai'
+const DOCS_URL = 'https://github.com/sarthakgupta0303/architect-web#readme'
 
 type FooterLink = { label: string; href: string; external?: boolean }
 
@@ -27,7 +26,6 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
     title: 'Resources',
     links: [
       { label: 'Documentation', href: DOCS_URL, external: true },
-      { label: 'Lyzr', href: LYZR_URL, external: true },
     ],
   },
 ]
@@ -40,7 +38,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.5fr_repeat(3,1fr)]">
         <div className="max-w-xs">
           <Link href="/" aria-label="Architect home" className="inline-flex rounded-sm"><Logo /></Link>
-          <p className="mt-3 text-sm text-muted">Describe, build, deploy and govern AI agent apps. Made by Lyzr.</p>
+          <p className="mt-3 text-sm text-muted">Describe, build, deploy and govern AI agent apps.</p>
         </div>
         {COLUMNS.map((col) => (
           <nav key={col.title} aria-label={col.title}>
@@ -62,7 +60,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="border-t border-border">
-        <p className="mx-auto max-w-6xl px-4 py-5 text-xs text-muted sm:px-6">© {new Date().getFullYear()} Lyzr. All rights reserved.</p>
+        <p className="mx-auto max-w-6xl px-4 py-5 text-xs text-muted sm:px-6">© {new Date().getFullYear()} Architect. All rights reserved.</p>
       </div>
     </footer>
   )

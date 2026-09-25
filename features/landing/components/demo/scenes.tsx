@@ -58,7 +58,7 @@ export function PromptScene({ e }: SceneProps) {
           {!done && <span className="ml-0.5 inline-block h-4 w-0.5 translate-y-0.5 animate-pulse bg-primary-text" />}
         </p>
         <div className="mt-2 flex items-center justify-between gap-2">
-          <span className="rounded-full bg-surface-2 px-2 py-0.5 font-mono text-[10px] text-muted">lyzr-adk</span>
+          <span className="rounded-full bg-surface-2 px-2 py-0.5 font-mono text-[10px] text-muted">architect-adk</span>
           <span
             className={cn(
               'inline-flex h-8 items-center gap-1.5 rounded-full bg-primary px-3 text-xs font-medium text-primary-fg transition-all duration-150',
@@ -266,7 +266,7 @@ export function GraphScene({ e, reduced }: SceneProps) {
         <p className="text-sm font-semibold">Agent graph</p>
         <div className={cn('ml-auto flex gap-1.5', appear(e >= 3000))}>
           <Badge tone="primary" className="text-[10px]">4 agents</Badge>
-          <Badge tone="neutral" className="hidden text-[10px] sm:inline-flex">Lyzr ADK</Badge>
+          <Badge tone="neutral" className="hidden text-[10px] sm:inline-flex">Architect ADK</Badge>
         </div>
       </div>
       <div
@@ -348,7 +348,7 @@ export function GraphScene({ e, reduced }: SceneProps) {
 /* ------------------------------------------------------------------ */
 
 const FILES = [
-  'lyzr.yaml',
+  'architect.yaml',
   'agents/triage.py',
   'agents/knowledge.py',
   'agents/responder.py',
@@ -515,7 +515,7 @@ export function PreviewScene({ e }: SceneProps) {
           <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />
           <div className="min-w-0">
             <p className="text-xs font-semibold">Your app is live</p>
-            <p className="truncate font-mono text-[11px] text-primary-text">northwind-support.lyzr.app</p>
+            <p className="truncate font-mono text-[11px] text-primary-text">northwind-support.architect.app</p>
           </div>
         </div>
       )}

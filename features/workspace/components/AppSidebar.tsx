@@ -47,7 +47,7 @@ export function AppSidebar({ collapsed, onToggle, mobileOpen, onMobileOpenChange
       </div>
       <nav aria-label="Workspace" className="mt-2 flex-1 space-y-0.5 px-3">
         {items.map((it) => <NavItem key={it.href} {...it} compact={collapsed && !isMobile} />)}
-        <a href="https://docs.lyzr.ai" target="_blank" rel="noopener noreferrer" className={cn('flex items-center gap-3 rounded-lg px-2.5 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-fg', collapsed && !isMobile && 'justify-center')}>
+        <a href="https://github.com/sarthakgupta0303/architect-web#readme" target="_blank" rel="noopener noreferrer" className={cn('flex items-center gap-3 rounded-lg px-2.5 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-fg', collapsed && !isMobile && 'justify-center')}>
           <BookOpen className="size-5 shrink-0" aria-hidden />{(!collapsed || isMobile) && 'Docs'}
         </a>
       </nav>

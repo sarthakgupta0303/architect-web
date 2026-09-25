@@ -98,7 +98,7 @@ export function DashboardPrompt() {
 
       {tab === 'import' && (
         <div className="grid gap-3 sm:grid-cols-2">
-          <ImportCard icon={Github} title="GitHub repository" body="LangGraph, CrewAI, OpenAI Agents SDK, Lyzr ADK or any Next.js app." onClick={() => setImportSource('github')} />
+          <ImportCard icon={Github} title="GitHub repository" body="LangGraph, CrewAI, OpenAI Agents SDK, Architect ADK or any Next.js app." onClick={() => setImportSource('github')} />
           <ImportCard icon={FileArchive} title="Zip upload" body="Upload a project archive, or an export from Architect v1, Lovable, Bolt or Replit." onClick={() => setImportSource('zip')} />
         </div>
       )}

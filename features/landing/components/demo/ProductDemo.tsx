@@ -39,7 +39,7 @@ const TRANSCRIPT: { scene: number; at: number; text: string }[] = [
   { scene: 1, at: 4400, text: 'Got it: Shopify orders, Zendesk Guide articles, refunds over $200 go to #support-leads.' },
   { scene: 2, at: 300, text: 'Here is the plan. Review it before anything is built.' },
   { scene: 3, at: 300, text: 'Four agents, three integrations. Triage is the entry point.' },
-  { scene: 4, at: 200, text: 'Building with Lyzr ADK and running tests.' },
+  { scene: 4, at: 200, text: 'Building with Architect ADK and running tests.' },
   { scene: 4, at: 4900, text: 'Build passed. The preview is ready to try.' },
   { scene: 5, at: 5300, text: 'Deployed. Your support agent is live.' },
 ]
