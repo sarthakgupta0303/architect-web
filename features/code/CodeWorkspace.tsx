@@ -13,7 +13,7 @@ import { ErrorState } from '@/components/ui/States'
 import { DemoBadge } from '@/components/shared/DemoBadge'
 import { useGraph } from '@/features/canvas/hooks/use-graph'
 import { useProject } from '@/features/project/context'
-import { cn, sleep } from '@/lib/utils'
+import { cn, sleep, scrollToEnd } from '@/lib/utils'
 import { generateFiles, type VFile } from './files'
 
 type Proposal = { path: string; before: string; after: string; summary: string }
@@ -195,7 +195,7 @@ function Terminal({ files }: { files: VFile[] }) {
   const [lines, setLines] = useState<string[]>(['Architect sandbox · type "help"'])
   const [cmd, setCmd] = useState('')
   const end = useRef<HTMLDivElement>(null)
-  useEffect(() => { end.current?.scrollIntoView() }, [lines])
+  useEffect(() => { scrollToEnd(end.current, false) }, [lines])
   async function exec(c: string) {
     const out: string[] = [`$ ${c}`]
     const [bin, ...args] = c.trim().split(/\s+/)

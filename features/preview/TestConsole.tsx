@@ -2,7 +2,7 @@
 
 import { ArrowUp, Bot, ChevronRight, ThumbsDown, ThumbsUp } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { cn, sleep } from '@/lib/utils'
+import { cn, sleep, scrollToEnd } from '@/lib/utils'
 
 type Agent = { id: string; name: string; role: string | null; type: string; isEntry: boolean }
 type Edge = { from: string; to: string; condition: string; label: string | null }
@@ -45,7 +45,7 @@ export function TestConsole({ name, description, agents, edges }: { name: string
   const [busy, setBusy] = useState(false)
   const [openTrace, setOpenTrace] = useState<number | null>(null)
   const end = useRef<HTMLDivElement>(null)
-  useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages, busy])
+  useEffect(() => { scrollToEnd(end.current) }, [messages, busy])
 
   async function send() {
     const text = draft.trim()

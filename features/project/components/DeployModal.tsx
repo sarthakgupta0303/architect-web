@@ -15,7 +15,7 @@ import { useWorkspace } from '@/features/workspace/context'
 import { ApiError, apiFetch } from '@/lib/api/client'
 import { can, type MembershipContext } from '@/lib/authz'
 import type { DeployEnvironment, DeployOverview, DeploymentDto, DeploymentEventDto, FixActionType, PreflightCheck, PreflightResult } from '@/lib/core/services/deploy-service'
-import { cn } from '@/lib/utils'
+import { cn, scrollToEnd } from '@/lib/utils'
 import { useProject } from '../context'
 
 type Phase = 'checks' | 'deploying' | 'done' | 'failed'
@@ -102,7 +102,7 @@ export function DeployModal({ open, onOpenChange }: { open: boolean; onOpenChang
     retry: false,
   })
 
-  useEffect(() => { logRef.current?.lastElementChild?.scrollIntoView({ block: 'nearest' }) }, [shown.length, showLogs])
+  useEffect(() => { scrollToEnd(logRef.current?.lastElementChild as HTMLElement | null, false) }, [shown.length, showLogs])
 
   const deploy = useMutation({
     mutationFn: () => apiFetch<DeployResponse>(`/api/projects/${project.id}/deployments`, { body: { environment: env } }),

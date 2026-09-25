@@ -10,7 +10,7 @@ import { useProject } from '@/features/project/context'
 import { ApiError, apiFetch } from '@/lib/api/client'
 import type { ClarifyQuestionDto, EstimateDto, PrdDto } from '@/lib/contracts/generation'
 import type { AgentDto, AgentGraphDto } from '@/lib/contracts/agents'
-import { cn, sleep } from '@/lib/utils'
+import { cn, sleep, scrollToEnd } from '@/lib/utils'
 import { graphKey } from '@/features/canvas/hooks/use-graph'
 import { WINDOW, type ContextType, type Source } from '@/lib/core/memory/types'
 import { SourceAttribution } from './SourceAttribution'
@@ -107,7 +107,7 @@ export function ChatPanel({ onTab, autoStart, hasAgents, startSignal = 0, onBuil
   }, [chat.data])
   const endRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }) }, [messages, stage, buildStep, steps.blocks])
+  useEffect(() => { scrollToEnd(endRef.current) }, [messages, stage, buildStep, steps.blocks])
 
   useEffect(() => {
     if (autoStart && !started.current && project.initialPrompt && !hasAgents && canEdit) {

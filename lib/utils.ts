@@ -95,3 +95,21 @@ export function seededRandom(seed: string): () => number {
 export function sleep(ms: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, ms))
 }
+
+/**
+ * Scrolls the nearest scrollable ancestor of `el` so `el` is visible at the bottom.
+ * Unlike Element.scrollIntoView, this never scrolls the page itself or a parent frame
+ * (scrollIntoView inside an iframe scrolls the embedding page too).
+ */
+export function scrollToEnd(el: HTMLElement | null, smooth = true) {
+  if (!el) return
+  let node: HTMLElement | null = el.parentElement
+  while (node && node !== document.body) {
+    const { overflowY } = getComputedStyle(node)
+    if ((overflowY === 'auto' || overflowY === 'scroll') && node.scrollHeight > node.clientHeight) {
+      node.scrollTo({ top: node.scrollHeight, behavior: smooth ? 'smooth' : 'auto' })
+      return
+    }
+    node = node.parentElement
+  }
+}
