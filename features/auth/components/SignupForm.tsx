@@ -18,7 +18,7 @@ export function SignupForm() {
   const params = useSearchParams()
   const next = safeNext(params.get('next'), '/app')
   const [formError, setFormError] = useState<string | null>(null)
-  const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignupInput>({ resolver: zodResolver(SignupSchema) })
+  const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignupInput>({ resolver: zodResolver(SignupSchema), defaultValues: { email: params.get('email') ?? '' } })
 
   async function onSubmit(values: SignupInput) {
     setFormError(null)

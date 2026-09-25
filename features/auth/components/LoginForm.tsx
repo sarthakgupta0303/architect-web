@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/Button'
 import { FieldError, Input, Label } from '@/components/ui/Input'
@@ -17,7 +17,7 @@ export function LoginForm() {
   const router = useRouter()
   const params = useSearchParams()
   const next = safeNext(params.get('next'), '/app')
-  const [formError, setFormError] = useState<string | null>(params.get('error') === 'oauth' ? 'Sign-in with that provider did not complete. Please try again.' : null)
+  const [formError, setFormError] = useState<ReactNode>(params.get('error') === 'oauth' ? 'Sign-in with that provider did not complete. Please try again.' : null)
   const { register, handleSubmit, getValues, formState: { errors, isSubmitting } } = useForm<LoginInput>({ resolver: zodResolver(LoginSchema) })
 
   async function onSubmit(values: LoginInput) {
@@ -29,6 +29,17 @@ export function LoginForm() {
     } catch (e) {
       if (e instanceof ApiError && e.details?.verify) {
         router.push(`/verify?email=${encodeURIComponent(values.email)}&next=${encodeURIComponent(next)}`)
+        return
+      }
+      if (e instanceof ApiError && e.code === 'UNAUTHENTICATED') {
+        const signup = `/signup?email=${encodeURIComponent(values.email)}&next=${encodeURIComponent(next)}`
+        setFormError(
+          <>
+            That email and password don’t match an account. New here?{' '}
+            <Link href={signup} className="font-medium underline underline-offset-2">Create an account with {values.email}</Link>
+            {' '}— any email works.
+          </>,
+        )
         return
       }
       setFormError(e instanceof ApiError ? e.message : 'Could not sign in — please try again')
