@@ -8,7 +8,7 @@ export function DemoSection() {
         id="demo-title"
         eyebrow="See it in action"
         title="From one sentence to a live support agent"
-        intro="Watch Architect turn a request for an e-commerce support agent into a planned, built, tested and deployed app. Hover to pause, or pick a step."
+        intro="Watch Architect turn a request for an e-commerce support agent into a planned, built, tested and deployed app. Use the pause button, or pick a step to jump to it."
       />
       <div className="mt-10">
         <ProductDemo />

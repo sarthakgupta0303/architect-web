@@ -52,7 +52,6 @@ export function ProductDemo() {
   const [clock, setClock] = useState<Clock>({ scene: 0, elapsed: 0 })
   const [reduced, setReduced] = useState(false)
   const [userPaused, setUserPaused] = useState(false)
-  const [hovered, setHovered] = useState(false)
   const [visible, setVisible] = useState(true)
   const rootRef = useRef<HTMLElement>(null)
 
@@ -79,7 +78,7 @@ export function ProductDemo() {
     return () => io.disconnect()
   }, [])
 
-  const running = !reduced && !userPaused && !hovered && visible
+  const running = !reduced && !userPaused && visible
 
   useEffect(() => {
     if (!running) return
@@ -119,8 +118,6 @@ export function ProductDemo() {
       ref={rootRef}
       aria-label="Animated product demo: building a customer support agent for an online store"
       className="w-full"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <figcaption className="sr-only">
         A six-step walkthrough of Architect. {SCENES.map((s, i) => `Step ${i + 1}, ${s.label}: ${s.description}`).join(' ')}
