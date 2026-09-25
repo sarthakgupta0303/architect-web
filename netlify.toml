@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # NEXT_PUBLIC_* values are designed to be public: Next.js inlines them into the browser bundle.
+  # Skip them in Netlify's secrets scan. Real secrets (SUPABASE_SERVICE_ROLE_KEY, SECRETS_ENCRYPTION_KEY)
+  # are NOT listed here, so they are still scanned.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_APP_URL,NEXT_PUBLIC_MOCK_MODE"
