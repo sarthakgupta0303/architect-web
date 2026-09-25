@@ -7,17 +7,6 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/Button'
 import { createClient } from '@/lib/supabase/client'
 
-function GoogleIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
-      <path fill="currentColor" d="M21.6 12.23c0-.68-.06-1.36-.18-2.02H12v3.83h5.39a4.6 4.6 0 0 1-2 3.02v2.5h3.23c1.9-1.75 2.98-4.32 2.98-7.33Z" />
-      <path fill="currentColor" opacity=".75" d="M12 22c2.7 0 4.97-.9 6.62-2.43l-3.23-2.5c-.9.6-2.05.95-3.39.95-2.6 0-4.81-1.76-5.6-4.12H3.07v2.58A10 10 0 0 0 12 22Z" />
-      <path fill="currentColor" opacity=".55" d="M6.4 13.9a6 6 0 0 1 0-3.8V7.52H3.07a10 10 0 0 0 0 8.96L6.4 13.9Z" />
-      <path fill="currentColor" opacity=".9" d="M12 5.98c1.47 0 2.79.5 3.83 1.5l2.86-2.86A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.93 5.52L6.4 10.1C7.19 7.74 9.4 5.98 12 5.98Z" />
-    </svg>
-  )
-}
-
 function GithubIcon() {
   return (
     <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
@@ -29,18 +18,18 @@ function GithubIcon() {
 const NOT_SET_UP = 'Not set up for this project yet — enable it in Supabase → Authentication → Providers. Use email for now.'
 
 export function OAuthButtons({ next }: { next: string }) {
-  const [pending, setPending] = useState<'google' | 'github' | null>(null)
+  const [pending, setPending] = useState<'github' | null>(null)
   const providers = useQuery({
     queryKey: ['auth-providers'],
     queryFn: async () => {
       const r = await fetch('/api/auth/providers', { cache: 'no-store' })
-      return r.ok ? ((await r.json()) as { google: boolean; github: boolean }) : { google: false, github: false }
+      return r.ok ? ((await r.json()) as { github: boolean }) : { github: false }
     },
     staleTime: 60_000,
   })
-  const enabled = (p: 'google' | 'github') => providers.data?.[p] ?? false
+  const enabled = (p: 'github') => providers.data?.[p] ?? false
 
-  async function signIn(provider: 'google' | 'github') {
+  async function signIn(provider: 'github') {
     if (!enabled(provider)) {
       toast.info(NOT_SET_UP)
       return
@@ -53,11 +42,11 @@ export function OAuthButtons({ next }: { next: string }) {
     })
     if (error) {
       setPending(null)
-      toast.error(error.message.includes('not enabled') ? `${provider === 'google' ? 'Google' : 'GitHub'} sign-in is not enabled for this project yet` : error.message)
+      toast.error(error.message.includes('not enabled') ? `GitHub sign-in is not enabled for this project yet` : error.message)
     }
   }
 
-  const button = (p: 'google' | 'github', label: string, icon: JSX.Element) => {
+  const button = (p: 'github', label: string, icon: JSX.Element) => {
     const off = providers.isSuccess && !enabled(p)
     const btn = (
       <Button variant="secondary" className="w-full" onClick={() => signIn(p)} loading={pending === p} disabled={pending !== null || providers.isLoading} aria-disabled={off || undefined}>
@@ -70,13 +59,12 @@ export function OAuthButtons({ next }: { next: string }) {
 
   return (
     <div className="grid gap-2">
-      {button('google', 'Continue with Google', <GoogleIcon />)}
       {button('github', 'Continue with GitHub', <GithubIcon />)}
     </div>
   )
 }
 
-export function Divider({ label = 'or' }: { label?: string }) {
+export function Divider({ label = 'or continue with email' }: { label?: string }) {
   return (
     <div className="my-5 flex items-center gap-3 text-xs text-muted" role="separator">
       <span className="h-px flex-1 bg-border" />{label}<span className="h-px flex-1 bg-border" />

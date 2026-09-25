@@ -48,9 +48,9 @@ Built with Next.js, TypeScript, Tailwind CSS and Supabase.
 
 > Never commit `.env.local`. It's already listed in `.gitignore`.
 
-## Google and GitHub sign-in (optional)
+## GitHub sign-in (optional)
 
-In Supabase, go to **Authentication → Sign In / Providers**, turn on Google or GitHub, and add the client ID and secret from that provider. Email sign-up works without any extra setup.
+In Supabase, go to **Authentication → Sign In / Providers**, turn on **GitHub**, and add the Client ID and secret from a GitHub OAuth app. Email sign-up works without any extra setup.
 
 ## Scripts
 
