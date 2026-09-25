@@ -1,0 +1,43 @@
+/*
+ * Architect 2.0 design tokens — source: docs/design-system.md §1.
+ * RGB triplets so Tailwind opacity modifiers work (bg-primary/10).
+ * Interim Lyzr-style palette: swap values here when exact brand hex values are supplied.
+ */
+:root {
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* light */
+  --color-bg: 250 250 253;
+  --color-surface: 255 255 255;
+  --color-surface-2: 243 241 250;
+  --color-border: 228 225 240;
+  --color-fg: 21 18 43;
+  --color-muted: 94 90 122;
+  --color-primary: 109 40 217;
+  --color-primary-fg: 255 255 255;
+  --color-primary-text: 109 40 217;
+  --color-accent: 192 38 211;
+  --color-success: 21 128 61;
+  --color-warning: 180 83 9;
+  --color-danger: 185 28 28;
+  --color-info: 29 78 216;
+}
+
+.dark {
+  --color-bg: 11 10 22;
+  --color-surface: 20 18 38;
+  --color-surface-2: 28 26 51;
+  --color-border: 42 39 69;
+  --color-fg: 238 237 247;
+  --color-muted: 162 158 196;
+  --color-primary: 123 63 228;
+  --color-primary-fg: 255 255 255;
+  --color-primary-text: 184 161 255;
+  --color-accent: 232 121 249;
+  --color-success: 74 222 128;
+  --color-warning: 251 191 36;
+  --color-danger: 248 113 113;
+  --color-info: 96 165 250;
+}
